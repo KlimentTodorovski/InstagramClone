@@ -1,0 +1,161 @@
+<loading-spinner *ngIf="gettingData"></loading-spinner>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4
+                col-lg-4
+                col-md-4
+                col-sm-4
+                d-none d-sm-block">
+      <button type="button"
+            class="btn
+                    btn-dark
+                    float-xl-left mb-xl-0
+                    float-lg-left mb-lg-0
+                    float-md-left mb-md-0
+                    float-sm-left mb-sm-0
+                    mb-2"
+            (click)="backToPhoto()">Back to Photo</button>
+    </div>
+    <div class="col-2
+                d-block d-sm-none">
+      <a class="text-dark
+                float-left ml-3"
+          (click)="backToPhoto()">
+        <i class="fa fa-chevron-left"></i>
+      </a>
+    </div>
+    <div class="col-xl-4
+                col-lg-4
+                col-md-4
+                col-sm-4
+                col-8">
+      <h4>Edit Photo</h4>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="container"
+      *ngIf="!gettingData">
+  <form novalidate
+        [formGroup]="photoForm"
+        (ngSubmit)="save()">
+    <div class="form-group
+                row">
+      <label class="col-form-label
+                    col-xl-2
+                    col-lg-2
+                    col-md-3
+                    col-sm-12
+                    col-12"
+              for="titleId">Title</label>
+      <div class="col-xl-10
+                  col-lg-10
+                  col-md-9
+                  col-sm-12
+                  col-12">
+        <input class="form-control
+                      text-center
+                      text-xl-left
+                      text-lg-left
+                      text-md-left
+                      text-sm-center"
+                id="titleId"
+                type="text"
+                placeholder="Title (required)"
+                formControlName="title"
+                [ngClass]="{'is-invalid': (photoForm.get('title').touched ||
+                                    photoForm.get('title').dirty) &&
+                                    !photoForm.get('title').valid }" />
+        <span class="invalid-feedback">
+          <span *ngIf="photoForm.get('title').errors?.required">
+            Please enter the title of the photo.
+          </span>
+          <span *ngIf="photoForm.get('title').errors?.minlength">
+            This title must be longer then 5 characters.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group
+                row">
+      <label class="col-form-label
+                    col-xl-2
+                    col-lg-2
+                    col-md-3
+                    col-sm-12
+                    col-12"
+              for="urlId">Url</label>
+      <div class="col-xl-10
+                  col-lg-10
+                  col-md-9
+                  col-sm-12
+                  col-12">
+        <input class="form-control
+                      text-center
+                      text-xl-left
+                      text-lg-left
+                      text-md-left
+                      text-sm-center"
+                id="urlId"
+                type="text"
+                placeholder="Url (required)"
+                formControlName="url"
+                [ngClass]="{'is-invalid': (photoForm.get('url').touched ||
+                                    photoForm.get('url').dirty) &&
+                                    !photoForm.get('url').valid }" />
+        <span class="invalid-feedback">
+          <span *ngIf="photoForm.get('url').errors?.required">
+            Please enter the url of the photo.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group
+                row">
+      <label class="col-form-label
+                    col-xl-2
+                    col-lg-2
+                    col-md-3
+                    col-sm-12
+                    col-12"
+              for="thumbnailUrlId">Thumbnail Url</label>
+      <div class="col-xl-10
+                  col-lg-10
+                  col-md-9
+                  col-sm-12
+                  col-12">
+        <input class="form-control text-center
+                      text-xl-left
+                      text-lg-left
+                      text-md-left
+                      text-sm-center"
+                id="thumbnailUrlId"
+                type="text"
+                placeholder="Thumbnail Url (required)"
+                formControlName="thumbnailUrl"
+                [ngClass]="{'is-invalid': (photoForm.get('thumbnailUrl').touched ||
+                                    photoForm.get('thumbnailUrl').dirty) &&
+                                    !photoForm.get('thumbnailUrl').valid }" />
+        <span class="invalid-feedback">
+          <span *ngIf="photoForm.get('thumbnailUrl').errors?.required">
+            Please enter the thumbnail url of the photo.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group
+                row">
+      <div class="col">
+        <button class="btn
+                        btn-dark"
+                type="submit"
+                [disabled]="!photoForm.valid">
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

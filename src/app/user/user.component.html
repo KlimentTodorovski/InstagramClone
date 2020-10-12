@@ -1,0 +1,51 @@
+<loading-spinner *ngIf="gettingData"></loading-spinner>
+<div class="container
+            text-center"
+      *ngIf="!gettingData">
+  <div class="row">
+    <div class="col-3
+                col-xs-3
+                d-block d-sm-block d-md-none">
+      <a class="text-dark
+                float-left ml-3
+                float-sm-left ml-sm-3"
+          routerLink='/users'>
+        <i class="fa fa-home fa-2x mt-1"></i>
+      </a>
+    </div>
+    <div class="col-4
+                col-xl-4
+                col-lg-4
+                col-md-4
+                d-none d-sm-none d-md-block">
+      <a class="navbar-brand
+                text-dark
+                float-xl-left ml-xl-3
+                float-lg-left ml-lg-3
+                float-md-left ml-md-3"
+          routerLink='/users'>
+        Instagram
+      </a>
+    </div>
+    <div class="col-xl-4
+                col-lg-4
+                col-md-4
+                col-sm-9
+                col-9">
+      <h3 class="float-right
+                  float-xl-none mr-xl-0
+                  float-lg-none mr-lg-0
+                  float-md-none mr-md-0">
+        {{this.user.username}}
+      </h3>
+    </div>
+  </div>
+  <hr />
+  <b>{{this.user.name}}</b>
+  <br />
+  <i class="fa fa-map-marker"></i> {{this.user.address.city}}, {{user.address.street}}
+  <br />
+  <i class="fa fa-envelope"></i> {{this.user.email}}
+  <hr />
+  <router-outlet></router-outlet>
+</div>

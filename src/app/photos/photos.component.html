@@ -1,0 +1,86 @@
+<loading-spinner *ngIf="gettingData"></loading-spinner>
+<div *ngIf="route.children.length === 0">
+  <div class="row">
+    <div class="col-xl-4
+                col-lg-4
+                col-md-4
+                d-none d-sm-none d-md-block">
+      <button type="button"
+              class="btn
+                    btn-dark
+                    float-xl-left ml-xl-3 mb-xl-0
+                    float-lg-left ml-lg-3 mb-lg-0
+                    float-md-left ml-md-3 mb-md-0"
+            (click)="backToAlbums()">Albums</button>
+    </div>
+    <div class="col-4
+                col-sm-4
+                d-block d-sm-block d-md-none">
+      <a class="text-dark
+                float-left ml-3
+                float-sm-left ml-sm-3"
+          (click)="backToAlbums()">
+        <i class="fa fa-chevron-left"></i>
+      </a>
+    </div>
+    <div class="col-xl-4
+                col-lg-4
+                col-md-4
+                col-sm-4
+                col-4">
+      <h5 class="text-dark
+                  text-center
+                  mb-2">{{album.title}}</h5>
+    </div>
+    <div class="col-xl-4
+                col-lg-4
+                col-md-4
+                d-none d-sm-none d-md-block">
+      <button type="button"
+              class="btn
+                      btn-dark
+                      float-xl-right mr-xl-3 mb-xl-0
+                      float-lg-right mr-lg-3 mb-lg-0
+                      float-md-right mr-md-3 mb-md-0"
+              [routerLink]="[ 0 + '/edit']">Add new photo</button>
+    </div>
+    <div class="col-4
+                col-sm-4
+                d-block d-sm-block d-md-none">
+      <a class="text-dark
+                float-right mr-3
+                float-sm-right mr-sm-3"
+                [routerLink]="[ 0 + '/edit']">
+        <i class="fa fa-plus"></i>
+      </a>
+    </div>
+  </div>
+  <hr />
+</div>
+<div class="container"
+      *ngIf="route.children.length === 0">
+  <div class="row">
+    <div class="col-xl-3
+                col-lg-3
+                col-md-4
+                col-sm-6
+                col-12"
+          *ngFor="let photo of photos">
+      <div class="card
+                  position-relative">
+        <div class="card-header
+                    small">
+          {{photo.title}}
+        </div>
+        <div class="card-body
+                    pull-left">
+          <img src={{photo.thumbnailUrl}}
+              class="img-thumbnail"
+              [routerLink]="[ photo.id ]">
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

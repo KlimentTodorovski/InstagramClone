@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row
+              text-center">
+    <div class="col-12
+                col-lg-4
+                col-md-4
+                col-sm-4">
+      <a class="navbar-brand
+                text-dark
+                float-xl-left ml-xl-3
+                float-lg-left ml-lg-3
+                float-md-left ml-md-3
+                float-sm-left ml-sm-3
+                mr-0
+                d-none d-sm-block"
+          routerLink='/users'>Instagram</a>
+    </div>
+    <div class="col-12
+                col-lg-4
+                col-md-4
+                col-sm-4">
+      <h3 class="text-dark">Users</h3>
+    </div>
+  </div>
+</div>
+<hr />
+<loading-spinner *ngIf="gettingData"></loading-spinner>
+<div class="container
+            text-center"
+      *ngFor="let user of users">
+  <div class="row">
+    <div class="col">
+      <a class="text-dark"
+          [routerLink]="[user.id, 'albums']">{{user.username}}</a>
+      <br />
+    </div>
+  </div>
+</div>
